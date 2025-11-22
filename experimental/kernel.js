@@ -94,21 +94,6 @@ function boot(id){
   log("kernel", "Succesful Boot")
 }
 
-function init(){
-  let m = followPath("System/Library")
-  font = getFile("font.json", m).contents
-  config = getFile("config.json", m).contents
-  let a = getFile("requirements.json", m)
-  registerClick = false
-  executeCFF(".pack","System/Library/require.pack")
-  for(let i of a.contents){
-    requestExecFunction(() => require(i), 'packLoaded')
-  }
-  requestExecFunction(() => log("kernel", "Succesful high-level initialization"), '')
-  log("kernel", "Succesful low-level initialization")
-  return 1
-}
-
 function executeCFF(extension, data){
   let tr = `System/Library/${extension}.cff`
   tr = getFile(tr).contents
@@ -175,3 +160,4 @@ function tick(){
 		}
 	}
 }
+executeCFF('.pack', 'System/Library/launcher.pack')

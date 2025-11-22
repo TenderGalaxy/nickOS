@@ -1,0 +1,14 @@
+function init(){
+  let m = followPath("System/Library")
+  font = getFile("font.json", m).contents
+  config = getFile("config.json", m).contents
+  let a = getFile("requirements.json", m)
+  registerClick = false
+  executeCFF(".pack","System/Library/require.pack")
+  for(let i of a.contents){
+    requestExecFunction(() => require(i), 'packLoaded')
+  }
+  requestExecFunction(() => log("minosLauncher", "Succesful high-level initialization"), '')
+  log("minosLauncher", "Succesful low-level initialization")
+  return 1
+}
