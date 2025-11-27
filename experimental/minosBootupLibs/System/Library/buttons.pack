@@ -13,7 +13,7 @@ globalThis.Button = class extends Window{
     api.log(userCursorPos, this.startx, this.starty, this.x, this.y)
     if(inBounds(userCursorPos[0], this.startx, this.startx + this.x) && inBounds(userCursorPos[1], this.starty, this.starty + this.y)){
       requestExecFunction(() => this.toExec, "")
-	  clickFunctions.push((() => this.exec()))
-    }
+	}
+	clickFunctions.push((() => this.exec()))
   }
 }
