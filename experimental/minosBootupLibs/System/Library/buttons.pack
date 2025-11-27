@@ -1,16 +1,19 @@
 require('display.pack')
 require('cursors.pack')
 
+
 globalThis.Button = class extends Window{
   constructor(x,y, dx, dy, func){
     super(x, y, dx, dy)
     this.toExec = func
-    clickFunctions[clickFunctions.length] = (() => this.exec())
+    clickFunctions.push((() => this.exec()))
   }
   exec(){
+	api.log(this)
     api.log(userCursorPos, this.startx, this.starty, this.x, this.y)
     if(inBounds(userCursorPos[0], this.startx, this.startx + this.x) && inBounds(userCursorPos[1], this.starty, this.starty + this.y)){
       requestExecFunction(() => this.toExec, "")
+	  clickFunctions.push((() => this.exec()))
     }
   }
 }
