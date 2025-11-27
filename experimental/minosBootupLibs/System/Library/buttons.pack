@@ -5,10 +5,10 @@ globalThis.Button = class extends Window{
   constructor(x,y, dx, dy, func){
     super(x, y, dx, dy)
     this.toExec = func
-    clickFunctions.push(this.exec)
+    clickFunctions[clickFunctions.length] = (() => this.exec())
   }
   exec(){
-    if(inBounds(userCursorPos[0], x, x + dx) && inBounds(userCursorPos[1], y + dy)){
+    if(inBounds(userCursorPos[0], this.x, this.x + this.dx) && inBounds(userCursorPos[1], this.y + this.dy)){
       requestExecFunction(() => this.toExec, "")
     }
   }
