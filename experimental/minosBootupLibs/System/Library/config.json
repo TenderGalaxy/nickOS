@@ -1,6 +1,6 @@
 {
-  displayx: 256,
-  displayy: 128,
-  DARK: 86,
-  LIGHT: 144
+  displayx: 128,
+  displayy: 64,
+  dark: 86,
+  light: 144
 }
