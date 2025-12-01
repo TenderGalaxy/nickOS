@@ -4,9 +4,11 @@ globalThis.decreaseClick = function(){
 	userCursorPos = getPlayerLook()
 	if(registerClick){
 		api.log(userCursorPos)
+		let a = [...clickFunctions]
+		clickFunctions = []
 		let m = ''
-		while(clickFunctions.length > 0){
-			m = clickFunctions.shift()
+		while(a.length > 0){
+			m = a.shift()
 			m(userCursorPos)
 		}
 	}
