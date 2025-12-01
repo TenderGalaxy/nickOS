@@ -3,7 +3,6 @@ require("utils.pack")
 globalThis.decreaseClick = function(){
 	userCursorPos = getPlayerLook()
 	if(registerClick){
-		api.log(userCursorPos)
 		let a = [...clickFunctions]
 		clickFunctions = []
 		let m = ''
