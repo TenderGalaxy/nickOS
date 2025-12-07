@@ -1,5 +1,12 @@
 globalThis.drawDisplay = function(id = user){
   screen = Array.from({length: config.displayy}, () => Array(config.displayx).fill(config.light))
+  try{
+    buffer = getFile('System/buffer.json').contents
+  } catch {
+    newFile('System', {name: 'buffer', extension: '.json', contents: Array.from({length: config.displayy}, () => Array(config.displayx).fill(-1))})
+    log('display.pack', 'Creating Screen Buffer')
+  }
+  buffer = getFile('System/buffer.json').contents
   for(let i of Object.values(windows)){
     i.render()
   }
@@ -22,6 +29,8 @@ globalThis.dis = function(){
       }
     }
   } else {
+    screen = null
+    buffer = null
     return ''
   }
 }
@@ -48,7 +57,7 @@ globalThis.Window = class{
       this.win[i][y2] = config.dark
     }
   }
-  dtxt(x,y, f, on = 86, off = 144,xlim = this.x, ylim = this.y){
+  dtxt(x,y, f, on = display.dark, off = display.light,xlim = this.x, ylim = this.y){
     let dx = x
     for(let i= 0; i < f.length && y < ylim; i++){
       if(f[i] === '\\n'){
