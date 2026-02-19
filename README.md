@@ -55,4 +55,4 @@ Credits to @the_cccc for font
 
 Credits to @TenderGalaxy (fenl) for main programming
 
-Licensed under GPL V3, non-creditors will be persecuted
+Licensed under GPL V3, non-creditors will be prosecuted
